@@ -21,6 +21,9 @@ profession_mapping = OrderedDict([
     (u'pracownik bhp', [
         u'bhp',
         u'BHP',
+        u'higieny pracy',
+        u'inspektor pracy',
+        u'inspektor bezpieczeństwa',
     ]),
     (u'budowlaniec', [
         u'budowlaniec',
@@ -34,10 +37,13 @@ profession_mapping = OrderedDict([
         u'technik budownictwa',
         u'technik budowlany',
 
+        u'budowl',
+
     ]),
     (u'chemik', [
         u'chemik',
         u'technik chemik',
+        u'chemi',
     ]),
     (u'Etyk/Filozof', [
         u'etyk',
@@ -53,11 +59,14 @@ profession_mapping = OrderedDict([
     ]),
     (u'Górnik', [
         u'górnik',
+        u'górnictw',
+        u'górnic',
     ]),
     (u'Historyk', [
         u'historyk',
         u'historyk sztuki',
         u'archeolog',
+        u'history',
 
     ]),
     (u'mechanik', [
@@ -92,6 +101,7 @@ profession_mapping = OrderedDict([
         u'spedytor',
         u'magazynier',
         u'magazy',
+        u'logisty',
     ]),
     (u'Polityk', [
         u'polityk',
@@ -108,23 +118,61 @@ profession_mapping = OrderedDict([
     (u'Sportowiec', [
         u'sportowiec',
         u'trener',
+        u'sport',
+        u'zawodnik',
+        u'pływ',
     ]),
     (u'Student', [
         u'student',
         u'studentka',
+        u'doktorant',
+        u'doktorantka',
     ]),
     (u'Sociolog', [
         u'socjolog',
         u'socjolożka',
     ]),
-    (u'Tłumacz', [
+    (u'pracownik socjalny', [
+        u'pracownik socjalny',
+        u'pracownica socjalna',
+        u'opiekun w domu pomocy społecznej',
+        u'socjal'
+    ]),
+    (u'pracownik turystyki', [
+        u'turysty'
+        u'hotel'
+
+    ]),
+    (u'pracownik gastronomii', [
+        u'pracownik gastronomii',
+        u'barman',
+        u'kelner',
+        u'kelnerka',
+        u'kuchar',
+        u'barista',
+        u'baristka',
+        u'żywienia',
+        u'żywnoś',
+    ]),
+    (u'pracownik turystyki', [
+        u'hotelarz',
+        u'turyst',
+    ]),
+    (u'pracownik ochrony środowiska', [
+        u'ochrony środowiska',
+        u'środowisk',
+    ]),
+    (u'Językoznawca/Tłumacz', [
         u'tłumacz',
         u'tłumaczka',
         u'lektor języka',
         u'filolog',
         u'germanista',
+        u'germanistka',
         u'anglista',
-
+        u'anglistka',
+        u'językoznaw',
+        u'lingwist',
     ]),
 
     ## grupy właściwe
@@ -133,18 +181,27 @@ profession_mapping = OrderedDict([
         u'bezrobotna',
         u'bez zawodu',
         u'brak zawodu',
+        u'nie pracuj',
     ]),
     (u'Nauczyciel/Wykładowca', [
         u'nauczyciel',
         u'wykładowca',
         u'pedagog',
+        u'pedagożka',
         # u'filolog',
         u'matematyk',
         u'politolog',
         u'pracownik naukowy',
         u'dyrektor szkoły',     ## menedżer?
         u'kierownik placówki oświatowej',
-        u'pracownik naukowo-dydatkyczny',
+        u'pracownik naukowo-dydaktyczny',
+        u'pracownik umysłowy',
+        u'doktor nauk',
+
+        u'katecheta',
+        u'katechetka',
+
+        u'oświat',
     ]),
     (u'Emeryt/Rencista', [
         u'emeryt',
@@ -159,8 +216,12 @@ profession_mapping = OrderedDict([
         u'adwokat',
         u'radca prawny',
         u'radca',
+        u'notariusz',
         u'sędzia',
         u'sądu',
+        u'sądo',
+        u'adwoka',
+        u'prawa',
     ]),
     (u'Handlowiec', [
         u'handlowiec',
@@ -184,6 +245,7 @@ profession_mapping = OrderedDict([
         u'agent ubezpieczeniowy',       #?
         u'doradca ubezpieczeniowy',
         u'specjalista do spraw ubezpieczeń',
+        u'broker',
 
         u'doradca do spraw rynku nieruchomości',
         u'do spraw reklamy',
@@ -201,6 +263,7 @@ profession_mapping = OrderedDict([
         u'public relations',
         u'ubezpiecze',
         u'sprzedaż',
+        u'reklam',
 
     ]),
     (u'Lekarz/Farmaceuta', [
@@ -214,6 +277,11 @@ profession_mapping = OrderedDict([
         u'lekarz medycyny',
         u'logopeda',
         u'psycholog',
+        u'kardio',
+        u'psycholo',
+        u'orto',
+        u'stomatolo',
+
 
         u'farmaceuta',
         u'technik farmacji',
@@ -227,17 +295,25 @@ profession_mapping = OrderedDict([
         u'terapeutka',
 
         u'optyk',
+        u'chirurg',
 
         u'pielęgniarka',
         u'pielęgniarz',
         u'magister pielęgniarstwa',
         u'położna',
         u'opiekun medyczny',
+        u'opiekun osoby',
+        u'sanitariusz',
+
+        u'masażysta',
+        u'masażystka',
 
         u'technik elektroradiologii',
         u'rehabil',
         u'zdrow',
-        u'leczn'
+        u'leczn',
+        u'medyc',
+        u'farmac',
 
     ]),
     (u'Ekonomista', [
@@ -253,12 +329,23 @@ profession_mapping = OrderedDict([
         u'bankowiec',
         u'analityk finansowy',
         u'analityk bankowy',
+        u'analityk biznesowy',
         u'magister ekonomii',
         u'specjalista bankowości',
         u'audytor',
+        u'auditor',
         u'mgr ekonomii',
+        u'rewident',
+        u'makler',
 
         u'ekono',
+        u'finans',
+        u'bank',
+        u'kredyt',
+        u'giełd',
+        u'księgowoś',
+        u'inwesty',
+        u'fundusz',
 
     ]),
     (u'Inżynier', [
@@ -266,9 +353,12 @@ profession_mapping = OrderedDict([
         u'informatyk',
         u'programista',
         u'programista aplikacji',
+        u'programistka',
         u'architekt',
         u'administrator systemów komputerowych',
         u'tester oprogramowania',
+        u'komputer',
+        u'internet',
     ]),
     (u'Urzędnik', [
         u'urzędnik',
@@ -285,10 +375,25 @@ profession_mapping = OrderedDict([
         u'pracownik administracji',
         u'samorządowiec',
         u'pracownik samorządowy',
+        u'pracownik administrac',
+        u'pracownik nik',
         u'poseł',
+        u'parlamentarzysta',
+        u'parlamentarzystka',
         u'specjalista administracji publicznej',
+        u'specjalista ds. administracji',
         u'mgr administracji',
         u'magister administracji',
+        u'do spraw administracji',      # clash with IT?
+        u'radny',
+        u'radna',
+        u'senator',
+        u'samorząd',
+        u'urzędni',
+
+        u'działacz',
+        u'związkow',
+        u'władzy publicznej'
 
     ]),
     (u'kierownik', [
@@ -299,6 +404,7 @@ profession_mapping = OrderedDict([
         u'menedżer',
         u'menadżer',
         u'manager',
+        u'menager',
         u'prezes',
         u'dyrektor generalny',
         u'dyrektor',
@@ -314,10 +420,14 @@ profession_mapping = OrderedDict([
         u'ogrodnik',
         u'pszczelarz',
         u'doradca rolniczy',
-        u'sadow',
+        u'sadowni',
+        u'roln',
+        u'ogro'
+
     ]),
     (u'Mundurowy', [
         u'mundurowy',
+        u'oficer',
         u'strażak',
         u'policjant',
         u'wojskowy',
@@ -333,6 +443,7 @@ profession_mapping = OrderedDict([
     ]),
     (u'Artysta/Wolny Zawód', [
         u'artysta',
+        u'artystka',
         u'muzyk',
         u'organista',
         u'aktor',
@@ -353,7 +464,17 @@ profession_mapping = OrderedDict([
         u'wokalistka',
         u'śpiewak',
         u'śpiewaczka',
+        u'piosenkar',
         u'poeta',
+        u'literat',
+        u'rzeźbiarz',
+        u'plastyczka',
+        u'plastyk',
+        u'witrażysta',
+        u'witrażystka',
+        u'kompozytor',
+        u'krytyk',
+        u'bloger',
     ]),
 ])
 
