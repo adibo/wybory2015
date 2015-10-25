@@ -1,5 +1,5 @@
 import pandas as pd
-from collections import OrderedDict
+from collections import OrderedDict, Counter
 
 
 col = u'Zawód'
@@ -111,8 +111,14 @@ profession_mapping = OrderedDict([
     ]),
     (u'rzemieślnik', [
         u'stolarz',
+
+        u'dekarz',      # budowlaniec???
+
         u'krawiec',
         u'krawcowa',
+
+        u'lakiernik',
+        u'introligator',
 
     ]),
     (u'Sportowiec', [
@@ -123,6 +129,8 @@ profession_mapping = OrderedDict([
         u'pływ',
     ]),
     (u'Student', [
+        u'uczeń',
+        u'uczennica',
         u'student',
         u'studentka',
         u'doktorant',
@@ -136,6 +144,8 @@ profession_mapping = OrderedDict([
         u'pracownik socjalny',
         u'pracownica socjalna',
         u'opiekun w domu pomocy społecznej',
+        u'asystent rodziny',
+        u'pracownik terapii uzależnień',
         u'socjal'
     ]),
     (u'pracownik turystyki', [
@@ -149,8 +159,13 @@ profession_mapping = OrderedDict([
         u'kelner',
         u'kelnerka',
         u'kuchar',
+        u'szef kuchni',
         u'barista',
         u'baristka',
+        u'gastronom',
+        u'restaurator',
+
+        u'spożyw',
         u'żywienia',
         u'żywnoś',
     ]),
@@ -200,6 +215,7 @@ profession_mapping = OrderedDict([
 
         u'katecheta',
         u'katechetka',
+        u'kaznodzieja',
 
         u'oświat',
     ]),
@@ -213,10 +229,12 @@ profession_mapping = OrderedDict([
     ]),
     (u'Prawnik', [
         u'prawnik',
+        u'prawniczka',
         u'adwokat',
         u'radca prawny',
         u'radca',
         u'notariusz',
+        u'prokurator',
         u'sędzia',
         u'sądu',
         u'sądo',
@@ -314,6 +332,7 @@ profession_mapping = OrderedDict([
         u'leczn',
         u'medyc',
         u'farmac',
+        u'fizjoterap',
 
     ]),
     (u'Ekonomista', [
@@ -356,9 +375,12 @@ profession_mapping = OrderedDict([
         u'programistka',
         u'architekt',
         u'administrator systemów komputerowych',
+        u'administrator bezpieczeństwa',
         u'tester oprogramowania',
         u'komputer',
         u'internet',
+        u'teleinformat',
+        u'telekomunika',
     ]),
     (u'Urzędnik', [
         u'urzędnik',
@@ -377,6 +399,7 @@ profession_mapping = OrderedDict([
         u'pracownik samorządowy',
         u'pracownik administrac',
         u'pracownik nik',
+        u'kontroler nik',
         u'poseł',
         u'parlamentarzysta',
         u'parlamentarzystka',
@@ -384,10 +407,14 @@ profession_mapping = OrderedDict([
         u'specjalista ds. administracji',
         u'mgr administracji',
         u'magister administracji',
-        u'do spraw administracji',      # clash with IT?
+        u'do spraw administracji',      #
+        u'sekretarz stanu',
         u'radny',
         u'radna',
         u'senator',
+        u'wójt',
+        u'rzecznik',
+
         u'samorząd',
         u'urzędni',
 
@@ -425,7 +452,7 @@ profession_mapping = OrderedDict([
         u'ogro'
 
     ]),
-    (u'Mundurowy', [
+    (u'Mundurowy/Ratownik', [
         u'mundurowy',
         u'oficer',
         u'strażak',
@@ -436,6 +463,7 @@ profession_mapping = OrderedDict([
         u'kryminolog',
         u'detektyw',
         u'strażnik miejski',
+        u'ratownik',
     ]),
     (u'Przedsiębiorca', [
         u'przedsiębiorca',
@@ -460,6 +488,7 @@ profession_mapping = OrderedDict([
         u'wydawca',
         u'producent filmowy',
         u'pisarz',
+        u'pisarka',
         u'wokalista',
         u'wokalistka',
         u'śpiewak',
@@ -475,6 +504,8 @@ profession_mapping = OrderedDict([
         u'kompozytor',
         u'krytyk',
         u'bloger',
+        u'operator filmowy',
+        u'reporter',
     ]),
 ])
 
@@ -488,7 +519,7 @@ def load_xls(file_path):
 def map_profession(text, mapping):
     for group, tokens in mapping.items():
         for token in tokens:
-            if token in text:
+            if token in text.lower():
                 return token
     return text
 
@@ -500,5 +531,21 @@ def consolidate(df, mapping, column=col):
     return df
 
 
-def consolidate_column(data, mapping, column=col):
-    data = data.apply(lambda row: map_profession(row[column]))
+if __name__ == "__main__":
+    file_path = './kandydaci/kandsejm2015-10-19-10-00.xls'
+    df = load_xls(file_path)
+    df = consolidate(df, profession_mapping, column=col)
+
+    rank = Counter(df[col])
+    top = rank.most_common(25)
+
+    df_len = float(len(df))
+    results = []
+    top_len = 0
+    for row in top:
+        ratio = row[1] / df_len
+        print row[0], ratio
+        top_len += row[1]
+        results.append(row[0], ratio)
+    print u'Pozostali', (df_len - top_len) / df_len
+    results.append(u'Pozostali', (df_len - top_len) / df_len)
